@@ -17,19 +17,21 @@ class ServerServices(object):
         print (txt)
         return txt
 
+    
+    #helper method
+    def increment_helper(self,graph):
+        graph['value'] += 1
+        for child in graph['children']:
+            child = self.increment_helper(child)
+        return graph
+
     #augment the items on the node
     @request
     def increment(self,graph):
-        print ( graph)
-        graph = _increment(graph)
+        print (graph)
+        graph = self.increment_helper(graph)
         return graph
 
-    #helper method
-    def _increment(self,graph):
-        graph['value'] += 1
-        for child in graph['children']:
-            _increment(self,child)
-        return graph
 
 #Quick-and-dirty TCP Server:
 ss = socket.socket(socket.AF_INET, socket. SOCK_STREAM)

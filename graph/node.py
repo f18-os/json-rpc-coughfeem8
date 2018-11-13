@@ -1,7 +1,7 @@
 class node:
-    def __init__(self, name, children):
+    def __init__(self, name, children = [])b:
         self.name = name
-        self.children = []
+        self.children = children
         self.val = 0
     def show(self, level=0):
         print("%s%s val=%d:" % (level*"  ", self.name, self.val))
